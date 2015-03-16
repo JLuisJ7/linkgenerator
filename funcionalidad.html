@@ -1,0 +1,135 @@
+
+<!DOCTYPE html">
+<html lang="ES">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="shortcut icon" href="/favicon.ico">
+<title>Share Link Generator: Facebook, Twitter, Google Plus, LinkedIn, Pinterest, and Email mailto forms</title>
+<link href='http://fonts.googleapis.com/css?family=Raleway:600,200' rel='stylesheet' type='text/css'>
+<link href="style.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.2.6/jquery.min.js"></script>
+<script type="text/javascript" src="script.js"></script>
+</head>
+
+<body>
+
+<div id="header"><h1>Share Link Generator! <img src="share-link-generator-logo.png" /></h1></div>
+
+<div id="container"><div id="description">
+<p>Create Facebook share links, Twitter &quot;tweet this&quot; links, Google Plus share links,  LinkedIn share links, Pinterest &quot;pin this&quot; links and email &quot;mailto&quot; links that will work anywhere — even inside emails!</p>
+  <p>We're running old school here: no iframes or JavaScript required.</p>
+  <p>Another tiny tool brought to you by <a href="http://patrickstjohn.org/">Patrick St. John</a>,
+    who wants to make your logos and websites and posters look good.<br />
+  <span class="light"><a href="http://www.patrickstjohn.org/contact">(You should talk to him!)</a></span></p>
+</div>
+
+
+
+<div id="facebookwrapper" class="wrapper">
+
+<h2>Facebook</h2>
+<form name="fb" method="post">
+<p>URL of that awesome thing you want to share<br/><input name="fburl" type="text"  /></p>
+<input class="makelink" type="button" name="Convert" value="Create the Link!" onClick="makeFB();">
+<div id="fboutputwrapper" class="output">URL only:<br/><textarea name="fboutput1" type="textarea" rows="5"></textarea>
+<p>HTML link: <span class="light">(text link, not an image)</span><br/><textarea name="fboutput2" type="textarea" rows="5"></textarea></p>
+<p><input class="makelink reset" type="button" value="Reset Form" onClick="this.form.reset(); $('#fboutputwrapper').slideToggle('fast');" /></p></div>
+</form>
+</div>
+
+
+<div id="twitterwrapper" class="wrapper">
+<h2>Twitter</h2>
+<form name="tw" method="post">
+<p style="margin-bottom:0;">Your awesome tweet<br/><textarea name="tweet" id="tweet" type="textarea" rows="5"  onkeyup="countChar(this)"></textarea><br/>
+<div id="charNum">&nbsp;</div></p>
+
+<input class="makelink" type="button" name="Convert" value="Create the Link!" onClick="makeTw();">
+<div id="twoutputwrapper" class="output">URL only:<br/><textarea name="twoutput" type="textarea" rows="5"></textarea>
+<p>HTML link: <span style="color:#9CCAF0;">(text link, not an image)</span><br/><textarea name="twoutput2" type="textarea" rows="5"></textarea></p>
+<p><input class="makelink reset" type="button" value="Reset Form" onClick="this.form.reset(); $('#twoutputwrapper').slideToggle('fast');" /></p></div>
+</form>
+</div>
+
+
+
+
+
+<div id="googlepluswrapper" class="wrapper">
+<h2>Google Plus</h2>
+<form name="googleplus" method="post">
+<p>URL of that awesome thing you want to share<br/><input name="gplusurl" type="text" /></p>
+<p><input class="makelink" type="button" name="Convert" value="Create the Link!" onClick="makeGPlus();"></p>
+<div id="gpoutputwrapper" class="output"><p>URL only:<br/><textarea name="gpoutput" type="textarea" rows="5"></textarea></p>
+<p>HTML link: <span style="color:#CCC;">(text link, not an image)</span><br/><textarea name="gpoutput2" type="textarea" rows="5"></textarea></p>
+<p><input class="makelink reset" type="button" value="Reset Form" onClick="this.form.reset(); $('#gpoutputwrapper').slideToggle('fast');" /></p></div>
+</form>
+</div>
+
+
+
+
+
+<div id="linkedinwrapper" class="wrapper">
+<h2>LinkedIn</h2>
+<form name="li" method="post">
+<p>URL of that awesome thing you want to share<br/><input name="liurl" type="text"  /></p>
+<p>Title<br/><input name="lititle" type="text" /></p>
+<p>Summary <span class="light">(optional)</span><br/><textarea name="lisummary" type="textarea" rows="5" style=" vertical-align:text-top;"></textarea></p>
+<p>Source <span class="light">(optional)</span><br/><input name="lisource" type="text"  /></p>
+
+<input class="makelink" type="button" name="Convert" value="Create the Link!" onClick="makeLI();">
+<div id="lioutputwrapper" class="output">URL only:<br/><textarea name="lioutput1" type="textarea" rows="5"></textarea>
+<p>HTML link: <span class="light">(text link, not an image)</span><br/><textarea name="lioutput2" type="textarea" rows="5"></textarea></p>
+<p><input class="makelink reset" type="button" value="Reset Form" onClick="this.form.reset(); $('#lioutputwrapper').slideToggle('fast');" /></p></div>
+</form>
+</div>
+
+
+<div id="pinterestwrapper" class="wrapper">
+<h2>Pinterest</h2>
+<form name="pin" method="post">
+<p>That awesome image you want to pin<br/><input name="pinimage" type="text"  /></p>
+<p>The source of that awesome image you want to pin<br/><input name="pinurl" type="text" /></p>
+<p>Description <span style="color:#ff9999;">(optional)</span><br/><textarea name="pinsummary" type="textarea" rows="5" style=" vertical-align:text-top;"></textarea></p>
+
+<input class="makelink reset" type="button" name="Convert" value="Create the Link!" onClick="makePin();">
+<div id="pinoutputwrapper" class="output">URL only:<br/><textarea name="pinoutput1" type="textarea" rows="5"></textarea>
+<p>HTML link: <span class="light">(text link, not an image)</span><br/><textarea name="pinoutput2" type="textarea" rows="5"></textarea></p>
+<p><input class="makelink reset" type="button" value="Reset Form" onClick="this.form.reset(); $('#pinoutputwrapper').slideToggle('fast');" /></p></div>
+</form>
+</div>
+
+
+
+
+
+<div id="emailwrapper" class="wrapper">
+<h2>Email</h2>
+<form name="email" method="post">
+<p>Recipient<br/><input name="emailrecipient" type="text"  /></p>
+<p>Subject <span style="color:#aaa;">(optional)</span><br/><input name="emailsubject" type="text" /></p>
+<p>CC <span style="color:#aaa;">(optional)</span><br/><input name="emailcc" type="text" /></p>
+<p>BCC <span style="color:#aaa;">(optional)</span><br/><input name="emailbcc" type="text" /></p>
+<p>Body <span style="color:#aaa;">(optional)</span><br/><textarea name="emailbody" type="textarea" rows="5" style=" vertical-align:text-top;"></textarea></p>
+
+<input class="makelink reset" type="button" name="Convert" value="Create the Link!" onClick="makeEmail();">
+<div id="emailoutputwrapper" class="output">URL only:<br/><textarea name="emailoutput1" type="textarea" rows="5"></textarea>
+<p>HTML link: <span style="color:#aaa;">(text link, not an image)</span><br/><textarea name="emailoutput2" type="textarea" rows="5"></textarea></p>
+<p><input class="makelink reset" type="button" value="Reset Form" onClick="this.form.reset(); $('#emailoutputwrapper').slideToggle('fast');" /></p></div>
+</form>
+</div>
+
+
+
+
+
+
+
+<div id="footer">
+  <p>Created by <a href="http://www.patrickstjohn.org">Patrick St. John</a>.</p><p><a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/deed.en_US"><img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by-sa/3.0/80x15.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/deed.en_US">Creative Commons Attribution-ShareAlike 3.0 Unported License</a>.</p></div>
+
+
+
+</body>
+</html>

@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <!--Import materialize.css-->
+  <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
+  <title>Share Link Generator: Facebook, Twitter, Google Plus, LinkedIn, Pinterest, and Email mailto forms</title>
+  <!--Let browser know website is optimized for mobile-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+  <link href="style.css" rel="stylesheet" type="text/css" />
+  <script type="text/javascript" src="script.js"></script>
+
+</head>
+</head>
+<body>
+  <nav class="light-blue lighten-1" role="navigation">
+    <div class="container">
+      <div class="nav-wrapper"><a id="logo-container" href="#" class="brand-logo">Logo</a>
+        <ul class="right">
+          <li><a href="#">Navbar Link</a></li>
+        </ul>
+
+        <ul id="nav-mobile" class="side-nav">
+          <li><a href="#">Navbar Link</a></li>
+        </ul>
+        <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
+      </div>
+    </div>
+  </nav>
+<div class="section no-pad-bot" id="index-banner">
+    <div class="container">
+      
+      <h1 class="header center orange-text">Share Link Generator!</h1>
+      <div class="row center">
+        <h5 class="header col s12 light">A modern responsive front-end framework based on Material Design</h5>
+      </div>    
+    </div>
+
+  <div class="container">
+    <div class="row">
+      <ul class="collapsible" data-collapsible="accordion">
+        <li>
+          <div class="collapsible-header"><i class="mdi-image-filter-drama"></i>Facebook</div>
+          <div class="collapsible-body">
+            <form name="fb" method="post">
+              <p>URL of that awesome thing you want to share<br/>
+                <input name="fburl" type="text"  />
+              </p>
+              <input class="makelink" type="button" name="Convert" value="Create the Link!" onClick="makeFB();">
+              <div id="fboutputwrapper" class="output">URL only:<br/>
+                <textarea name="fboutput1" type="textarea" rows="5"></textarea>
+                <p>HTML link: <span class="light">(text link, not an image)</span><br/>
+                  <textarea name="fboutput2" type="textarea" rows="5"></textarea>
+                </p>
+                <p>
+                  <input class="makelink reset" type="button" value="Reset Form" onClick="this.form.reset(); $('#fboutputwrapper').slideToggle('fast');" />
+                </p>
+              </div>
+            </form>
+          </div>
+        </li>
+        <li>
+          <div class="collapsible-header"><i class="mdi-maps-place"></i>Twitter</div>
+          <div class="collapsible-body">
+            <form name="tw" method="post">
+              <p style="margin-bottom:0;">Your awesome tweet<br/>
+                <textarea name="tweet" id="tweet" type="textarea" rows="5"  onkeyup="countChar(this)"></textarea><br/>
+                <div id="charNum">&nbsp;</div>
+              </p>
+              <input class="makelink" type="button" name="Convert" value="Create the Link!" onClick="makeTw();">
+              <div id="twoutputwrapper" class="output">URL only:<br/>
+                <textarea name="twoutput" type="textarea" rows="5"></textarea>
+                <p>HTML link: <span style="color:#9CCAF0;">(text link, not an image)</span><br/>
+                  <textarea name="twoutput2" type="textarea" rows="5"></textarea>
+                </p>
+                <p>
+                  <input class="makelink reset" type="button" value="Reset Form" onClick="this.form.reset(); $('#twoutputwrapper').slideToggle('fast');" />
+                </p>
+              </div>
+            </form>            
+          </div>
+        </li>
+        <li>
+          <div class="collapsible-header"><i class="mdi-social-whatshot"></i>Google Plus</div>
+          <div class="collapsible-body">
+            <form name="googleplus" method="post">
+              <p>URL of that awesome thing you want to share<br/>
+                <input name="gplusurl" type="text" />
+              </p>
+              <p>
+                <input class="makelink" type="button" name="Convert" value="Create the Link!" onClick="makeGPlus();">
+              </p>
+              <div id="gpoutputwrapper" class="output">
+                <p>URL only:<br/>
+                  <textarea name="gpoutput" type="textarea" rows="5"></textarea>
+                </p>
+                <p>HTML link: <span style="color:#CCC;">(text link, not an image)</span><br/>
+                  <textarea name="gpoutput2" type="textarea" rows="5"></textarea>
+                </p>
+                <p>
+                  <input class="makelink reset" type="button" value="Reset Form" onClick="this.form.reset(); $('#gpoutputwrapper').slideToggle('fast');" />
+                </p>
+              </div>
+            </form>
+          </div>
+        </li>
+        <li>
+          <div class="collapsible-header"><i class="mdi-image-filter-drama"></i>Linkedin</div>
+          <div class="collapsible-body">
+            
+          </div>
+        </li>
+        <li>
+          <div class="collapsible-header"><i class="mdi-maps-place"></i>Pinterest</div>
+          <div class="collapsible-body">
+            <form name="li" method="post">
+              <p>URL of that awesome thing you want to share<br/>
+                <input name="liurl" type="text"  />
+              </p>
+              <p>Title<br/>
+                <input name="lititle" type="text" />
+              </p>
+              <p>Summary <span class="light">(optional)</span><br/>
+                <textarea name="lisummary" type="textarea" rows="5" style=" vertical-align:text-top;"></textarea>
+              </p>
+              <p>Source <span class="light">(optional)</span><br/>
+                <input name="lisource" type="text"  />
+              </p>
+              <input class="makelink" type="button" name="Convert" value="Create the Link!" onClick="makeLI();">
+              <div id="lioutputwrapper" class="output">URL only:<br/>
+                <textarea name="lioutput1" type="textarea" rows="5"></textarea>
+                <p>HTML link: <span class="light">(text link, not an image)</span><br/>
+                  <textarea name="lioutput2" type="textarea" rows="5"></textarea>
+                </p>
+                <p>
+                  <input class="makelink reset" type="button" value="Reset Form" onClick="this.form.reset(); $('#lioutputwrapper').slideToggle('fast');" />
+                </p>
+              </div>
+            </form>
+          </div>
+        </li>
+        <li>
+          <div class="collapsible-header"><i class="mdi-social-whatshot"></i>Email</div>
+          <div class="collapsible-body">
+            <form name="pin" method="post">
+        <p>That awesome image you want to pin<br/>
+          <input name="pinimage" type="text"  />
+            </p>
+            <p>The source of that awesome image you want to pin<br/>
+              <input name="pinurl" type="text" /></p>
+            <p>Description <span style="color:#ff9999;">(optional)</span><br/>
+              <textarea name="pinsummary" type="textarea" rows="5" style=" vertical-align:text-top;"></textarea>
+            </p>
+            <input class="makelink reset" type="button" name="Convert" value="Create the Link!" onClick="makePin();">
+            <div id="pinoutputwrapper" class="output">URL only:<br/>
+              <textarea name="pinoutput1" type="textarea" rows="5"></textarea>
+            <p>HTML link: <span class="light">(text link, not an image)</span><br/>
+              <textarea name="pinoutput2" type="textarea" rows="5"></textarea>
+            </p>
+            <p>
+              <input class="makelink reset" type="button" value="Reset Form" onClick="this.form.reset(); $('#pinoutputwrapper').slideToggle('fast');" /></p>
+            </div>
+          </form>
+          </div>
+        </li>
+        <li>
+          <div class="collapsible-header"><i class="mdi-social-whatshot"></i>Email</div>
+          <div class="collapsible-body">
+            <form name="email" method="post">
+              <p>Recipient<br/>
+                <input name="emailrecipient" type="text"  />
+              </p>
+              <p>Subject <span style="color:#aaa;">(optional)</span><br/>
+                <input name="emailsubject" type="text" />
+              </p>
+              <p>CC <span style="color:#aaa;">(optional)</span><br/>
+                <input name="emailcc" type="text" />
+              </p>
+              <p>BCC <span style="color:#aaa;">(optional)</span><br/>
+                <input name="emailbcc" type="text" />
+              </p>
+              <p>Body <span style="color:#aaa;">(optional)</span><br/>
+                <textarea name="emailbody" type="textarea" rows="5" style=" vertical-align:text-top;"></textarea>
+              </p>
+              <input class="makelink reset" type="button" name="Convert" value="Create the Link!" onClick="makeEmail();">
+              <div id="emailoutputwrapper" class="output">URL only:<br/>
+                <textarea name="emailoutput1" type="textarea" rows="5"></textarea>
+                <p>HTML link: <span style="color:#aaa;">(text link, not an image)</span><br/>
+                  <textarea name="emailoutput2" type="textarea" rows="5"></textarea>
+                </p>
+                <p>
+                  <input class="makelink reset" type="button" value="Reset Form" onClick="this.form.reset(); $('#emailoutputwrapper').slideToggle('fast');" />
+                </p>
+              </div>
+            </form>
+          </div>
+        </li>        
+      </ul>
+    </div>
+  </div>  
+    
+</div>
+    
+<footer class="page-footer orange">
+    <div class="footer-copyright">
+      <div class="container">
+      Made by <a class="orange-text text-lighten-3" href="http://materializecss.com">Materialize</a>
+      </div>
+    </div>
+  </footer>
+  <!--Import jQuery before materialize.js-->
+  <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script type="text/javascript" src="js/materialize.min.js"></script>
+</body>
+</html>
