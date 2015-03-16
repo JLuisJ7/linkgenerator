@@ -1,4 +1,13 @@
 // JavaScript Document
+function resetform(){
+	document.fb.reset();
+	document.tw.reset();
+	$('#charNum').text("");
+	document.googleplus.reset();
+	document.li.reset();
+	document.pin.reset();
+	document.email.reset();
+}
 
 function countChar(val) {
         var len = val.value.length;

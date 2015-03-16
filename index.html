@@ -1,37 +1,34 @@
 <!DOCTYPE html>
-<html>
+<html lang="ES">
 <head>
   <!--Import materialize.css-->
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
   <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
   <title>Share Link Generator: Facebook, Twitter, Google Plus, LinkedIn, Pinterest, and Email mailto forms</title>
   <!--Let browser know website is optimized for mobile-->
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+  <meta charset="utf-8">
   <link href="style.css" rel="stylesheet" type="text/css" />
   <script type="text/javascript" src="script.js"></script>
 
 </head>
 </head>
 <body>
-  <nav class="light-blue lighten-1" role="navigation">
-    <div class="container">
-      <div class="nav-wrapper"><a id="logo-container" href="#" class="brand-logo">Logo</a>
-        <ul class="right">
-          <li><a href="#">Navbar Link</a></li>
-        </ul>
-
-        <ul id="nav-mobile" class="side-nav">
-          <li><a href="#">Navbar Link</a></li>
-        </ul>
-        <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
-      </div>
+   <nav>
+    <div class="nav-wrapper">
+      <a href="#" class="brand-logo center">Logo</a>
+      <!--<ul id="nav-mobile" class="left hide-on-med-and-down">
+        <li><a href="sass.html">Sass</a></li>
+        <li><a href="components.html">Components</a></li>
+        <li><a href="javascript.html">JavaScript</a></li>
+      </ul>-->
     </div>
   </nav>
 <div class="section no-pad-bot" id="index-banner">
     <div class="container">
-      
-      <h1 class="header center orange-text">Share Link Generator!</h1>
+      <h1 class="header center-on-small-only">Share Link Generator!</h1>      
       <div class="row center">
-        <h5 class="header col s12 light">A modern responsive front-end framework based on Material Design</h5>
+        <h5 class="header col s12 light">Create Facebook share links, Twitter "tweet this" links, Google Plus share links, LinkedIn share links, Pinterest "pin this" links and email "mailto" links that will work anywhere — even inside emails!</h5>
       </div>    
     </div>
 
@@ -39,11 +36,11 @@
     <div class="row">
       <ul class="collapsible" data-collapsible="accordion">
         <li>
-          <div class="collapsible-header"><i class="mdi-image-filter-drama"></i>Facebook</div>
+          <div class="collapsible-header"><i class="fa fa-facebook"></i>Facebook</div>
           <div class="collapsible-body">
             
               <form name="fb" method="post" class="col s12">
-                <div class="row">
+                
                   <div class="input-field col s12">
                     <input id="fburl" name="fburl" type="text" class="validate">
                     <label for="fburl">URL of that awesome thing you want to share</label>
@@ -62,45 +59,191 @@
                       <label for="fboutput2">HTML link: (text link, not an image)</label>
                     </div>
                     <div class="col s12">
-                      <input class="makelink reset" type="button" value="Reset Form" onClick="this.form.reset(); $('#gpoutputwrapper').slideToggle('fast');" />
+                      <a class="waves-effect waves-light btn" data-form="fb" onClick="resetform(); $('#fboutputwrapper').slideToggle('fast');">Reset Form</a>
                     </div>             
                   </div>
                   
-                </div>
+                
               </form>
             
           </div>
         </li>
         <li>
-          <div class="collapsible-header"><i class="mdi-maps-place"></i>Twitter</div>
-          <div class="collapsible-body">
-            <div class="row">
-              <form12 class=""></form12>
-            </div>
+          <div class="collapsible-header"><i class="fa fa-twitter"></i>Twitter</div>
+          <div class="collapsible-body">            
+              <form name="tw" method="post" class="col s12">
+                <div class="input-field col s12">
+                    <textarea id="tweet" name="tweet" rows="5" class="materialize-textarea" onkeyup="countChar(this)"></textarea>
+                    <label for="tweet">Your awesome tweet</label>
+                    <div id="charNum">&nbsp;</div>
+                </div>
+                <div class="col s12">
+                  <a class="waves-effect waves-light btn" onClick="makeTw();">Create the Link!</a>
+                </div>
+                <div id="twoutputwrapper" class="output">
+                  <div class="input-field col s12">
+                    <textarea id="twoutput" name="twoutput" rows="5" class="materialize-textarea" onkeyup="countChar(this)"></textarea>
+                    <label for="twoutput">URL only</label>
+                  </div>
+                  <div class="input-field col s12">
+                    <textarea id="twoutput2" name="twoutput2" rows="5" class="materialize-textarea" onkeyup="countChar(this)"></textarea>
+                    <label for="twoutput2">HTML link<span style="color:#9CCAF0;">(text link, not an image)</label>
+                  </div>
+                  <div class="col s12">
+                    
+                    <a class="waves-effect waves-light btn" data-form="tw" onClick="resetform(); $('#twoutputwrapper').slideToggle('fast');">Reset Form</a>
+                  </div>
+                </div>
+
+              </form>            
           </div>
         </li>
         <li>
-          <div class="collapsible-header"><i class="mdi-social-whatshot"></i>Google Plus</div>
+          <div class="collapsible-header"><i class="fa fa-google-plus"></i>Google Plus</div>
           <div class="collapsible-body">
-            
+             <form name="googleplus" method="post" class="col s12">
+                
+                  <div class="input-field col s12">
+                    <input id="gplusurl" name="gplusurl" type="text" class="validate">
+                    <label for="gplusurl">URL of that awesome thing you want to share</label>
+                  </div>
+                  <div class="col s12">
+                    <a class="waves-effect waves-light btn" onClick="makeGPlus();">Create the Link!</a>
+                  </div>
+                  
+                  <div id="gpoutputwrapper" class="output">
+                    <div class="input-field col s12">
+                      <textarea id="gpoutput" name="gpoutput" class="materialize-textarea"></textarea>
+                      <label for="gpoutput">URL only:</label>
+                    </div>
+                    <div class="input-field col s12">
+                      <textarea id="gpoutput2" name="gpoutput2" class="materialize-textarea"></textarea>
+                      <label for="gpoutput2">HTML link: <span style="color:#CCC;">(text link, not an image)</span></label>
+                    </div>
+                    <div class="col s12">                      
+                      <a class="waves-effect waves-light btn" data-form="gp" onClick="resetform(); $('#gpoutputwrapper').slideToggle('fast');">Reset Form</a>
+                    </div>             
+                  </div>
+                  
+                
+              </form>
           </div>
         </li>
         <li>
-          <div class="collapsible-header"><i class="mdi-image-filter-drama"></i>Linkedin</div>
+          <div class="collapsible-header"><i class="fa fa-linkedin"></i>Linkedin</div>
           <div class="collapsible-body">
-            
+            <form name="li" method="post" class="col s12">
+              <div class="input-field col s12">
+                <input id="liurl" name="liurl" type="text" class="validate">
+                <label for="liurl">URL of that awesome thing you want to share</label>
+              </div>
+              <div class="input-field col s12">
+                <input id="lititle" name="lititle" type="text" class="validate">
+                <label for="lititle">Title</label>
+              </div>
+              <div class="input-field col s12">
+                <textarea id="lisummary" name="lisummary" class="materialize-textarea"></textarea>
+                <label for="lisummary">Summary <span class="light">(optional)</span></label>
+              </div>
+              <div class="input-field col s12">
+                <input id="lisource" name="lisource" type="text" class="validate">
+                <label for="lisource">Source <span class="light">(optional)</span></label>
+              </div>
+              <div class="col s12">
+                <a class="waves-effect waves-light btn" onClick="makeLI();">Create the Link!</a>
+              </div>
+              <div id="lioutputwrapper" class="output">                
+                <div class="input-field col s12">
+                  <textarea id="lioutput1" name="lioutput1" class="materialize-textarea"></textarea>
+                  <label for="lioutput1">URL only</label>
+                </div>
+                <div class="input-field col s12">
+                  <textarea id="lioutput2" name="lioutput2" class="materialize-textarea"></textarea>
+                  <label for="lioutput2">HTML link: <span class="light">(text link, not an image)</span></label>
+                </div>
+                <div class="col s12">                    
+                      <a class="waves-effect waves-light btn" data-form="li" onClick="resetform(); $('#lioutputwrapper').slideToggle('fast');">Reset Form</a>
+                </div>
+              </div>
+            </form>
           </div>
         </li>
         <li>
-          <div class="collapsible-header"><i class="mdi-maps-place"></i>Pinterest</div>
+          <div class="collapsible-header"><i class="fa fa-pinterest-p"></i>Pinterest</div>
           <div class="collapsible-body">
-            
+            <form name="pin" method="post" class="col s12">
+              <div class="input-field col s12">
+                <input id="pinimage" name="pinimage" type="text" class="validate">
+                <label for="pinimage">That awesome image you want to pin</label>
+              </div>
+              <div class="input-field col s12">
+                <input id="pinurl" name="pinurl" type="text" class="validate">
+                <label for="pinurl">The source of that awesome image you want to pin</label>
+              </div>
+              <div class="input-field col s12">
+                <textarea id="pinsummary" name="pinsummary" class="materialize-textarea"></textarea>
+                <label for="pinsummary">Description <span style="color:#ff9999;">(optional)</span></label>
+              </div>              
+              <div class="col s12">
+                <a class="waves-effect waves-light btn" onClick="makePin();">Create the Link!</a>
+              </div>
+              <div id="pinoutputwrapper" class="output">                
+                <div class="input-field col s12">
+                  <textarea id="pinoutput1" name="pinoutput1" class="materialize-textarea"></textarea>
+                  <label for="pinoutput1">URL only</label>
+                </div>
+                <div class="input-field col s12">
+                  <textarea id="pinoutput2" name="pinoutput2" class="materialize-textarea"></textarea>
+                  <label for="pinoutput2">HTML link: <span class="light">(text link, not an image)</span></label>
+                </div>
+                <div class="col s12">
+                      <a class="waves-effect waves-light btn" data-form="pin" onClick="resetform(); $('#pinoutputwrapper').slideToggle('fast');">Reset Form</a>
+                </div>
+              </div>
+            </form>
           </div>
         </li>
         <li>
-          <div class="collapsible-header"><i class="mdi-social-whatshot"></i>Email</div>
+          <div class="collapsible-header"><i class="fa fa-envelope-o"></i>Email</div>
           <div class="collapsible-body">
-            
+            <form name="email" method="post" class="col s12">
+              <div class="input-field col s12">
+                <input id="emailrecipient" name="emailrecipient" type="text" class="validate">
+                <label for="emailrecipient">Recipient</label>
+              </div>
+              <div class="input-field col s12">
+                <input id="emailsubject" name="emailsubject" type="text" class="validate">
+                <label for="emailsubject">Subject <span style="color:#aaa;">(optional)</span></label>
+              </div>
+              <div class="input-field col s12">
+                <input id="emailcc" name="emailcc" type="text" class="validate">
+                <label for="emailcc">CC <span style="color:#aaa;">(optional)</span></label>
+              </div>
+              <div class="input-field col s12">
+                <input id="emailbcc" name="emailbcc" type="text" class="validate">
+                <label for="emailbcc">BCC <span style="color:#aaa;">(optional)</span></label>
+              </div>
+              <div class="input-field col s12">
+                <textarea id="emailbody" name="emailbody" class="materialize-textarea"></textarea>
+                <label for="emailbody">Body <span style="color:#ff9999;">(optional)</span></label>
+              </div>              
+              <div class="col s12">
+                <a class="waves-effect waves-light btn" onClick="makeEmail();">Create the Link!</a>
+              </div>
+              <div id="emailoutputwrapper" class="output">                
+                <div class="input-field col s12">
+                  <textarea id="emailoutput1" name="emailoutput1" class="materialize-textarea"></textarea>
+                  <label for="emailoutput1">URL only</label>
+                </div>
+                <div class="input-field col s12">
+                  <textarea id="emailoutput2" name="emailoutput2" class="materialize-textarea"></textarea>
+                  <label for="emailoutput2">HTML link: <span class="light">(text link, not an image)</span></label>
+                </div>
+                <div class="col s12">
+                  <a class="waves-effect waves-light btn" data-form="email" onClick="resetform(); $('#emailoutputwrapper').slideToggle('fast');">Reset Form</a>
+                </div>
+              </div>
+            </form>
           </div>
         </li>
       </ul>
@@ -110,13 +253,14 @@
     
 </div>
     
-<footer class="page-footer orange">
-    <div class="footer-copyright">
-      <div class="container">
-      Made by <a class="orange-text text-lighten-3" href="http://materializecss.com">Materialize</a>
-      </div>
-    </div>
-  </footer>
+        <footer class="page-footer">          
+          <div class="footer-copyright">
+            <div class="container">
+            © 2014 Copyright Text
+            <a class="grey-text text-lighten-4 right" href="#!">More Links</a>
+            </div>
+          </div>
+        </footer>
   <!--Import jQuery before materialize.js-->
   <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
   <script type="text/javascript" src="js/materialize.min.js"></script>
